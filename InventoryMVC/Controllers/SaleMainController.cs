@@ -10,7 +10,7 @@ namespace InventoryMVC.Controllers
 {
     public class SaleMainController : Controller
     {
-//this is sale main aaa
+//this is sale main aaa 222
         private INV_RIFEntities db = new INV_RIFEntities();
         //
         // GET: /SaleMain/
