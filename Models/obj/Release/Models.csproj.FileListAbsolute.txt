@@ -1,0 +1,10 @@
+F:\Rifat Test\InventoryMVC\Models\bin\Release\Models.dll.config
+F:\Rifat Test\InventoryMVC\Models\bin\Release\Models.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Release\Models.pdb
+F:\Rifat Test\InventoryMVC\Models\bin\Release\EntityFramework.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Release\EntityFramework.SqlServer.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Release\EntityFramework.xml
+F:\Rifat Test\InventoryMVC\Models\bin\Release\EntityFramework.SqlServer.xml
+F:\Rifat Test\InventoryMVC\Models\obj\Release\Models.csprojResolveAssemblyReference.cache
+F:\Rifat Test\InventoryMVC\Models\obj\Release\Models.dll
+F:\Rifat Test\InventoryMVC\Models\obj\Release\Models.pdb

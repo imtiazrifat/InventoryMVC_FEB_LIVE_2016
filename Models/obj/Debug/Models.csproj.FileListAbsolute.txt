@@ -1,0 +1,20 @@
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\Models.dll.config
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\Models.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\Models.pdb
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\EntityFramework.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\EntityFramework.SqlServer.dll
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\EntityFramework.xml
+F:\Rifat Test\InventoryMVC\Models\bin\Debug\EntityFramework.SqlServer.xml
+F:\Rifat Test\InventoryMVC\Models\obj\Debug\Models.dll
+F:\Rifat Test\InventoryMVC\Models\obj\Debug\Models.pdb
+F:\Rifat Test\InventoryMVC\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Projects\InventoryMVC\Models\bin\Debug\Models.dll.config
+D:\Projects\InventoryMVC\Models\bin\Debug\Models.dll
+D:\Projects\InventoryMVC\Models\bin\Debug\Models.pdb
+D:\Projects\InventoryMVC\Models\bin\Debug\EntityFramework.dll
+D:\Projects\InventoryMVC\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\InventoryMVC\Models\bin\Debug\EntityFramework.xml
+D:\Projects\InventoryMVC\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\InventoryMVC\Models\obj\Debug\Models.dll
+D:\Projects\InventoryMVC\Models\obj\Debug\Models.pdb
+D:\Projects\InventoryMVC\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

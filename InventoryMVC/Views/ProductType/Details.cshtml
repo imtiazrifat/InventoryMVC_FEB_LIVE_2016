@@ -1,0 +1,86 @@
+﻿@model Models.Inv_ProductType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<div class="col-md-12">
+    <section class="panel">
+        <h2>Details</h2>
+
+        <div>
+            <h4>Inv_ProductType</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductTypeName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductTypeName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductTypeCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductTypeCode)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Note)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Note)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UpdateDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UpdateDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsDeleted)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserId)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Inv_ProductTypeId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </section>
+</div>

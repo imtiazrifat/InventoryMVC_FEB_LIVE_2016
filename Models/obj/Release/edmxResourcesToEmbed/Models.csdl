@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="INV_RIFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Inv_Customer">
+    <Key>
+      <PropertyRef Name="Inv_CustomerId" />
+    </Key>
+    <Property Name="Inv_CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerMobile" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerDetails" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_Orders" Relationship="Self.FK_Inv_Orders_Inv_Customer" FromRole="Inv_Customer" ToRole="Inv_Orders" />
+  </EntityType>
+  <EntityType Name="Inv_OrderProduct">
+    <Key>
+      <PropertyRef Name="Inv_OrderProductId" />
+    </Key>
+    <Property Name="Inv_OrderProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Inv_OrdersId" Type="Int32" />
+    <Property Name="Inv_ProductId" Type="Int32" />
+    <Property Name="OrderQuantity" Type="Int32" />
+    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_Orders" Relationship="Self.FK_Inv_OrderProduct_Inv_Orders" FromRole="Inv_OrderProduct" ToRole="Inv_Orders" />
+    <NavigationProperty Name="Inv_Product" Relationship="Self.FK_Inv_OrderProduct_Inv_Product" FromRole="Inv_OrderProduct" ToRole="Inv_Product" />
+  </EntityType>
+  <EntityType Name="Inv_Orders">
+    <Key>
+      <PropertyRef Name="Inv_OrdersId" />
+    </Key>
+    <Property Name="Inv_OrdersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Inv_CustomerId" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderDetails" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="TotalUnit" Type="Int32" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Paid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Due" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiscountPercent" Type="Double" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Adjustment" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UnitofMeasurementCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_Customer" Relationship="Self.FK_Inv_Orders_Inv_Customer" FromRole="Inv_Orders" ToRole="Inv_Customer" />
+    <NavigationProperty Name="Inv_OrderProduct" Relationship="Self.FK_Inv_OrderProduct_Inv_Orders" FromRole="Inv_Orders" ToRole="Inv_OrderProduct" />
+    <NavigationProperty Name="Inv_ProductInventory" Relationship="Self.FK_Inv_ProductInventory_Inv_Orders" FromRole="Inv_Orders" ToRole="Inv_ProductInventory" />
+  </EntityType>
+  <EntityType Name="Inv_Product">
+    <Key>
+      <PropertyRef Name="Inv_ProductId" />
+    </Key>
+    <Property Name="Inv_ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Inv_ProductTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDetails" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="BuyPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Tax" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_OrderProduct" Relationship="Self.FK_Inv_OrderProduct_Inv_Product" FromRole="Inv_Product" ToRole="Inv_OrderProduct" />
+    <NavigationProperty Name="Inv_ProductType" Relationship="Self.FK_Inv_Product_Inv_ProductType" FromRole="Inv_Product" ToRole="Inv_ProductType" />
+  </EntityType>
+  <EntityType Name="Inv_ProductInventory">
+    <Key>
+      <PropertyRef Name="Inv_ProductInventoryId" />
+    </Key>
+    <Property Name="Inv_ProductInventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Inv_OrdersId" Type="Int32" />
+    <Property Name="Inv_ProductId" Type="Int32" />
+    <Property Name="QuantityStock" Type="Int32" />
+    <Property Name="AleartMinStock" Type="Int32" />
+    <Property Name="InventoryDate" Type="DateTime" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_Orders" Relationship="Self.FK_Inv_ProductInventory_Inv_Orders" FromRole="Inv_ProductInventory" ToRole="Inv_Orders" />
+  </EntityType>
+  <EntityType Name="Inv_ProductType">
+    <Key>
+      <PropertyRef Name="Inv_ProductTypeId" />
+    </Key>
+    <Property Name="Inv_ProductTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductTypeName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ProductTypeCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Inv_Product" Relationship="Self.FK_Inv_Product_Inv_ProductType" FromRole="Inv_ProductType" ToRole="Inv_Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Inv_Orders_Inv_Customer">
+    <End Role="Inv_Customer" Type="Self.Inv_Customer" Multiplicity="0..1" />
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Customer">
+        <PropertyRef Name="Inv_CustomerId" />
+      </Principal>
+      <Dependent Role="Inv_Orders">
+        <PropertyRef Name="Inv_CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_OrderProduct_Inv_Orders">
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="0..1" />
+    <End Role="Inv_OrderProduct" Type="Self.Inv_OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Orders">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Principal>
+      <Dependent Role="Inv_OrderProduct">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_OrderProduct_Inv_Product">
+    <End Role="Inv_Product" Type="Self.Inv_Product" Multiplicity="0..1" />
+    <End Role="Inv_OrderProduct" Type="Self.Inv_OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Product">
+        <PropertyRef Name="Inv_ProductId" />
+      </Principal>
+      <Dependent Role="Inv_OrderProduct">
+        <PropertyRef Name="Inv_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_ProductInventory_Inv_Orders">
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="0..1" />
+    <End Role="Inv_ProductInventory" Type="Self.Inv_ProductInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Orders">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Principal>
+      <Dependent Role="Inv_ProductInventory">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_Product_Inv_ProductType">
+    <End Role="Inv_ProductType" Type="Self.Inv_ProductType" Multiplicity="1" />
+    <End Role="Inv_Product" Type="Self.Inv_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_ProductType">
+        <PropertyRef Name="Inv_ProductTypeId" />
+      </Principal>
+      <Dependent Role="Inv_Product">
+        <PropertyRef Name="Inv_ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="INV_RIFEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Inv_Customer" EntityType="Self.Inv_Customer" />
+    <EntitySet Name="Inv_OrderProduct" EntityType="Self.Inv_OrderProduct" />
+    <EntitySet Name="Inv_Orders" EntityType="Self.Inv_Orders" />
+    <EntitySet Name="Inv_Product" EntityType="Self.Inv_Product" />
+    <EntitySet Name="Inv_ProductInventory" EntityType="Self.Inv_ProductInventory" />
+    <EntitySet Name="Inv_ProductType" EntityType="Self.Inv_ProductType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Inv_Orders_Inv_Customer" Association="Self.FK_Inv_Orders_Inv_Customer">
+      <End Role="Inv_Customer" EntitySet="Inv_Customer" />
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_OrderProduct_Inv_Orders" Association="Self.FK_Inv_OrderProduct_Inv_Orders">
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+      <End Role="Inv_OrderProduct" EntitySet="Inv_OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_OrderProduct_Inv_Product" Association="Self.FK_Inv_OrderProduct_Inv_Product">
+      <End Role="Inv_Product" EntitySet="Inv_Product" />
+      <End Role="Inv_OrderProduct" EntitySet="Inv_OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_ProductInventory_Inv_Orders" Association="Self.FK_Inv_ProductInventory_Inv_Orders">
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+      <End Role="Inv_ProductInventory" EntitySet="Inv_ProductInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_Product_Inv_ProductType" Association="Self.FK_Inv_Product_Inv_ProductType">
+      <End Role="Inv_ProductType" EntitySet="Inv_ProductType" />
+      <End Role="Inv_Product" EntitySet="Inv_Product" />
+    </AssociationSet>
+    <EntitySet Name="AspNetRoles" EntityType="INV_RIFModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="INV_RIFModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="INV_RIFModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="INV_RIFModel.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="INV_RIFModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="INV_RIFModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="INV_RIFModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="INV_RIFModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="INV_RIFModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="INV_RIFModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="INV_RIFModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="INV_RIFModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="INV_RIFModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="INV_RIFModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="INV_RIFModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="INV_RIFModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="INV_RIFModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="INV_RIFModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="INV_RIFModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>

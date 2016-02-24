@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="INV_RIFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inv_Customer">
+    <Key>
+      <PropertyRef Name="Inv_CustomerId" />
+    </Key>
+    <Property Name="Inv_CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" />
+    <Property Name="CustomerMobile" Type="varchar" MaxLength="150" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="250" />
+    <Property Name="CustomerDetails" Type="varchar" MaxLength="300" />
+    <Property Name="Note" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Inv_OrderProduct">
+    <Key>
+      <PropertyRef Name="Inv_OrderProductId" />
+    </Key>
+    <Property Name="Inv_OrderProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inv_OrdersId" Type="int" />
+    <Property Name="Inv_ProductId" Type="int" />
+    <Property Name="OrderQuantity" Type="int" />
+    <Property Name="Note" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Inv_Orders">
+    <Key>
+      <PropertyRef Name="Inv_OrdersId" />
+    </Key>
+    <Property Name="Inv_OrdersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inv_CustomerId" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="OrderDetails" Type="varchar" MaxLength="150" />
+    <Property Name="TotalUnit" Type="int" />
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="Paid" Type="money" />
+    <Property Name="Due" Type="money" />
+    <Property Name="DiscountPercent" Type="float" />
+    <Property Name="DiscountAmount" Type="money" />
+    <Property Name="Adjustment" Type="money" />
+    <Property Name="UnitofMeasurementCode" Type="varchar" MaxLength="150" />
+    <Property Name="Note" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Inv_Product">
+    <Key>
+      <PropertyRef Name="Inv_ProductId" />
+    </Key>
+    <Property Name="Inv_ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inv_ProductTypeId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="150" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="150" />
+    <Property Name="ProductDetails" Type="varchar" MaxLength="150" />
+    <Property Name="BuyPrice" Type="money" />
+    <Property Name="SellPrice" Type="money" />
+    <Property Name="Tax" Type="money" />
+    <Property Name="Note" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Inv_ProductInventory">
+    <Key>
+      <PropertyRef Name="Inv_ProductInventoryId" />
+    </Key>
+    <Property Name="Inv_ProductInventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inv_OrdersId" Type="int" />
+    <Property Name="Inv_ProductId" Type="int" />
+    <Property Name="QuantityStock" Type="int" />
+    <Property Name="AleartMinStock" Type="int" />
+    <Property Name="InventoryDate" Type="datetime" />
+    <Property Name="Note" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Inv_ProductType">
+    <Key>
+      <PropertyRef Name="Inv_ProductTypeId" />
+    </Key>
+    <Property Name="Inv_ProductTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductTypeName" Type="varchar" MaxLength="150" />
+    <Property Name="ProductTypeCode" Type="varchar" MaxLength="150" />
+    <Property Name="Note" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_OrderProduct_Inv_Orders">
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="0..1" />
+    <End Role="Inv_OrderProduct" Type="Self.Inv_OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Orders">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Principal>
+      <Dependent Role="Inv_OrderProduct">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_OrderProduct_Inv_Product">
+    <End Role="Inv_Product" Type="Self.Inv_Product" Multiplicity="0..1" />
+    <End Role="Inv_OrderProduct" Type="Self.Inv_OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Product">
+        <PropertyRef Name="Inv_ProductId" />
+      </Principal>
+      <Dependent Role="Inv_OrderProduct">
+        <PropertyRef Name="Inv_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_Orders_Inv_Customer">
+    <End Role="Inv_Customer" Type="Self.Inv_Customer" Multiplicity="0..1" />
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Customer">
+        <PropertyRef Name="Inv_CustomerId" />
+      </Principal>
+      <Dependent Role="Inv_Orders">
+        <PropertyRef Name="Inv_CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_Product_Inv_ProductType">
+    <End Role="Inv_ProductType" Type="Self.Inv_ProductType" Multiplicity="1" />
+    <End Role="Inv_Product" Type="Self.Inv_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_ProductType">
+        <PropertyRef Name="Inv_ProductTypeId" />
+      </Principal>
+      <Dependent Role="Inv_Product">
+        <PropertyRef Name="Inv_ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inv_ProductInventory_Inv_Orders">
+    <End Role="Inv_Orders" Type="Self.Inv_Orders" Multiplicity="0..1" />
+    <End Role="Inv_ProductInventory" Type="Self.Inv_ProductInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inv_Orders">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Principal>
+      <Dependent Role="Inv_ProductInventory">
+        <PropertyRef Name="Inv_OrdersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="INV_RIFModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_Customer" EntityType="Self.Inv_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_OrderProduct" EntityType="Self.Inv_OrderProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_Orders" EntityType="Self.Inv_Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_Product" EntityType="Self.Inv_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_ProductInventory" EntityType="Self.Inv_ProductInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inv_ProductType" EntityType="Self.Inv_ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_OrderProduct_Inv_Orders" Association="Self.FK_Inv_OrderProduct_Inv_Orders">
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+      <End Role="Inv_OrderProduct" EntitySet="Inv_OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_OrderProduct_Inv_Product" Association="Self.FK_Inv_OrderProduct_Inv_Product">
+      <End Role="Inv_Product" EntitySet="Inv_Product" />
+      <End Role="Inv_OrderProduct" EntitySet="Inv_OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_Orders_Inv_Customer" Association="Self.FK_Inv_Orders_Inv_Customer">
+      <End Role="Inv_Customer" EntitySet="Inv_Customer" />
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_Product_Inv_ProductType" Association="Self.FK_Inv_Product_Inv_ProductType">
+      <End Role="Inv_ProductType" EntitySet="Inv_ProductType" />
+      <End Role="Inv_Product" EntitySet="Inv_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inv_ProductInventory_Inv_Orders" Association="Self.FK_Inv_ProductInventory_Inv_Orders">
+      <End Role="Inv_Orders" EntitySet="Inv_Orders" />
+      <End Role="Inv_ProductInventory" EntitySet="Inv_ProductInventory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

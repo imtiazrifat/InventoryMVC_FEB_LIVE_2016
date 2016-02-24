@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8251d6f7d1d54b2abe56d5a68a5181ed" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_Customer" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_OrderProduct" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_Orders" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_Product" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_ProductInventory" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.Inv_ProductType" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INV_RIFModel.sysdiagram" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="INV_RIFModel.FK_Inv_Orders_Inv_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INV_RIFModel.FK_Inv_OrderProduct_Inv_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="INV_RIFModel.FK_Inv_OrderProduct_Inv_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="INV_RIFModel.FK_Inv_ProductInventory_Inv_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="INV_RIFModel.FK_Inv_Product_Inv_ProductType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="INV_RIFModel.AspNetRole" Width="1.5" PointX="7.375" PointY="2.5" />
+        <EntityTypeShape EntityType="INV_RIFModel.AspNetUserClaim" Width="1.5" PointX="11.875" PointY="3.625" />
+        <EntityTypeShape EntityType="INV_RIFModel.AspNetUserLogin" Width="1.5" PointX="11.875" PointY="1" />
+        <EntityTypeShape EntityType="INV_RIFModel.AspNetUser" Width="1.5" PointX="9.625" PointY="1.375" />
+        <AssociationConnector Association="INV_RIFModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="INV_RIFModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="INV_RIFModel.AspNetUserRoles" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

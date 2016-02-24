@@ -1,0 +1,186 @@
+﻿@*@model List<Models.Inv_Product>*@
+
+@{
+    ViewBag.Title = "GetAllProducts";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<html>
+<h2>All Product List</h2>
+
+
+<body>
+@*<h2>Part 1 : Implement jQuery Datatable in ASP.NET MVC</h2>*@
+<div style="width: 90%; margin: 0 auto;">
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <button type="button" class="btn btn-primary col-sm-3 " onclick="location.href='@Url.Action("Create", "Product")';return false;">Create New Product</button>
+        <div class="clearfix"></div>
+    </p>
+    <table id="myTable">
+        <thead>
+        <tr>
+            <th>ProductName Name</th>
+            <th>ProductCode</th>
+            <th>ProductDetails</th>
+            <th>BuyPrice</th>
+            <th>SellPrice</th>
+            <th>Note</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>
+
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+    }
+</style>
+@* Load datatable css *@
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+@* Load datatable js *@
+@section Scripts{
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+         
+            $('#myTable').DataTable({
+                "ajax": {
+                    "url": "/Product/GetAllProductsData",
+                    "type": "GET",
+                    "datatype": "json",
+                    "contentType": 'application/json; charset=utf-8',
+                 
+                },
+                "columns": [
+                        { "data": "ProductName", "autoWidth": true },
+                        { "data": "ProductCode", "autoWidth": true },
+                        { "data": "ProductDetails", "autoWidth": true },
+                        { "data": "BuyPrice", "autoWidth": true },
+                        { "data": "SellPrice", "autoWidth": true },
+                        { "data": "Note", "autoWidth": true },
+                        { "data": null, "autoWidth": true },
+                        
+
+                ],
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    debugger;
+                    $('td:eq(6)', nRow).html('<a class="glyphicon glyphicon-edit" href="/Product/Edit/' + aData.Inv_ProductId + '"></a>' + '     <a class="glyphicon glyphicon-remove" style="color:red" href="/Product/Delete/' + aData.Inv_ProductId + '"></a>');
+
+                    return nRow;
+
+                }
+            });
+
+        });
+
+
+    </script>
+}
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inv_ProductType.ProductTypeName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inv_ProductType.ProductTypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Inv_ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Inv_ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Inv_ProductId })
+            </td>
+        </tr>
+    }
+
+    </table>*@
